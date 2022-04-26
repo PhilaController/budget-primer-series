@@ -38,7 +38,13 @@
 export default {
   name: "App",
   data() {
-    return { reports: require("@/data/reports.json") };
+    return { reports: null };
+  },
+  async created() {
+    let url =
+      "https://raw.githubusercontent.com/PhilaController/budget-primer-series/main/src/data/reports.json";
+    const response = await fetch(url);
+    this.reports = await response.json();
   },
 };
 </script>
